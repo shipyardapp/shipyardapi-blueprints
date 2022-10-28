@@ -52,6 +52,8 @@ def write_file(response_txt, file, folder_name = None):
         print("Error: The file name must be a csv. Please add the .csv suffix to the file")
         sys.exit(ec.EXIT_CODE_INVALID_FILE_TYPE)
     if folder_name is not None:
+        ## create the directory if it does not exist
+        shipyard.create_folder_if_dne(folder_name)
         dest_path = shipyard.combine_folder_and_file_name(folder_name,file)
         message_path = os.path.join(os.getcwd(), folder_name, file)
         message = f"Saved {file} in {os.path.normpath(message_path)}"
