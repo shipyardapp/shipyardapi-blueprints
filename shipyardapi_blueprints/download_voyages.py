@@ -22,8 +22,8 @@ def form_url(organization_id):
     """
     Returns the url that will be used to form the request
     """
-
     return f"https://api.app.shipyardapp.com/orgs/{organization_id}/voyages"
+
 
 def form_request(url,api_key):
     """
@@ -35,7 +35,7 @@ def form_request(url,api_key):
         return results
 
     except Exception as e:
-        print(f"Error in making the request")
+        print(f"Error in making the request, ensure that your API key and organzation ID are correct")
         print(e)
         sys.exit(ec.EXIT_CODE_INVALID_CREDENTIALS)
 
