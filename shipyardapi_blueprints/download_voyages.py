@@ -61,7 +61,7 @@ def write_file(response_txt, file, folder_name=None):
         message = f"Saved {file} in {os.path.normpath(message_path)}"
     with open(dest_path, 'w') as csv_file:
         csv_file.write(response_txt)
-    print(f"Saved voyages to {message_path}")
+    print(f"Saved logs to {message_path}")
 
 
 def main():
