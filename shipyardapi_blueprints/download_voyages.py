@@ -11,7 +11,7 @@ except BaseException:
 
 def get_args():
     parser = argparse.ArgumentParser()
-    # parser.add_argument('--organization-id', dest='org_id', required=True)
+    parser.add_argument('--organization-id', dest='org_id', required=True)
     parser.add_argument("--api-key", dest='api_key', required=True)
     parser.add_argument("--file-name", dest="file_name", required=True)
     parser.add_argument('--folder-name', dest='folder_name', required=False)
@@ -54,9 +54,11 @@ def write_file(response_txt, file, folder_name=None):
         shipyard.create_folder_if_dne(folder_name)
         dest_path = shipyard.combine_folder_and_file_name(folder_name, file)
         message_path = os.path.join(os.getcwd(), folder_name, file)
+        message = f"Saved {file} in {os.path.normpath(message_path)}"
     else:
         dest_path = file
         message_path = os.path.join(os.getcwd(), file)
+        message = f"Saved {file} in {os.path.normpath(message_path)}"
     with open(dest_path, 'w') as csv_file:
         csv_file.write(response_txt)
     print(f"Saved logs to {message_path}")
@@ -64,8 +66,7 @@ def write_file(response_txt, file, folder_name=None):
 
 def main():
     args = get_args()
-    # org_id = args.org_id
-    org_id = os.getenv('SHIPYARD_ORG_NAME')
+    org_id = args.org_id
     api_key = args.api_key
     file_name = args.file_name
     folder_name = args.folder_name
