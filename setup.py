@@ -13,13 +13,13 @@ for path in Path('./').rglob('requirements.txt'):
 
 
 config = {
-    "description": "Simplified data pipeline blueprints for working with {VENDOR}.",
+    "description": "Simplified data pipeline blueprints for working with the Shipyard API.",
     "author": "Shipyard Team",
     "url": "https: // www.shipyardapp.com",
     "author_email": "tech@shipyardapp.com",
     "packages": find_packages(),
     "install_requires": install_requires,
-    "name": "googlebigquery-blueprints",
+    "name": "shipyardapi-blueprints",
     "version": "v0.1.0",
     "license": "Apache-2.0",
     "classifiers": [
