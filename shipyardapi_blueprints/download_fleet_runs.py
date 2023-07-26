@@ -34,7 +34,13 @@ def form_request(url,api_key):
     headers = {"X-Shipyard-API-Key":api_key}
     try:
         response = requests.get(url, headers = headers)
-        return response
+        if response.status_code == 200:
+            return response
+        else:
+            print(f"Request returned an error, status code from request is {response.status_code}")
+            print("Please ensure that org id, api token, and fleet id is correct")
+            sys.exit(ec.EXIT_CODE_INVALID_CREDENTIALS)
+        
 
     except Exception as e:
         print(f"Error in making the request")
